@@ -21,7 +21,7 @@ function NewsCard({ news, onEdit, onDelete, onToggleStatus }) {
                   ? 'bg-green-100 text-green-700' 
                   : 'bg-yellow-100 text-yellow-700'
               }`}>
-                {news.status === 'published' ? '✅ Опубликовано' : '📝 Черновик'}
+                {news.status === 'published' ? 'Опубликовано' : 'Черновик'}
               </span>
             </div>
             
@@ -31,10 +31,10 @@ function NewsCard({ news, onEdit, onDelete, onToggleStatus }) {
             
             <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
               <span className="flex items-center gap-1">
-                📅 {new Date(news.createdAt).toLocaleDateString('ru-RU')}
+                 {new Date(news.createdAt).toLocaleDateString('ru-RU')}
               </span>
               <span className="flex items-center gap-1">
-                👁️ {news.views} просмотров
+                 {news.views} просмотров
               </span>
             </div>
             
@@ -43,7 +43,7 @@ function NewsCard({ news, onEdit, onDelete, onToggleStatus }) {
                 onClick={() => onEdit(news)}
                 className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl text-sm font-semibold shadow-md hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 active:scale-95"
               >
-                ✏️ Редактировать
+                Редактировать
               </button>
               
               <button
@@ -54,14 +54,14 @@ function NewsCard({ news, onEdit, onDelete, onToggleStatus }) {
                     : 'bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:shadow-orange-500/25'
                 }`}
               >
-                {news.status === 'draft' ? '📢 Опубликовать' : '🔒 Снять'}
+                {news.status === 'draft' ? 'Опубликовать' : 'Снять'}
               </button>
               
               <button
                 onClick={() => onDelete(news)}
                 className="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl text-sm font-semibold shadow-md hover:shadow-red-500/25 transition-all duration-300 hover:scale-105 active:scale-95"
               >
-                🗑️ Удалить
+                Удалить
               </button>
             </div>
           </div>

@@ -8,7 +8,7 @@ let newsDb = [
     imageUrl: "https://picsum.photos/300/200",
     status: "published",
     createdAt: "2024-01-15T10:00:00.000Z",
-    views: 150,
+    views: 15,
     authorId: "1",
   }
 ];

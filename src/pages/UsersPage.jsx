@@ -227,7 +227,7 @@ function UserModal({ isOpen, onClose, onSave, user }) {
         <div className="relative bg-white rounded-xl shadow-2xl max-w-md w-full animate-slideRight">
           <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
             <h3 className="text-xl font-bold text-gray-900">
-              {user?.id ? '✏️ Редактировать пользователя' : '✨ Создать пользователя'}
+              {user?.id ? ' Редактировать пользователя' : ' Создать пользователя'}
             </h3>
             <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -287,8 +287,8 @@ function UserModal({ isOpen, onClose, onSave, user }) {
                 onChange={(e) => setFormData({ ...formData, role: e.target.value })}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg"
               >
-                <option value="editor">✏️ Редактор</option>
-                <option value="admin">👑 Администратор</option>
+                <option value="editor"> Редактор</option>
+                <option value="admin"> Администратор</option>
               </select>
               <p className="text-gray-400 text-xs mt-1">
                 Редактор: может создавать, редактировать, публиковать. Администратор: полный доступ
@@ -297,7 +297,7 @@ function UserModal({ isOpen, onClose, onSave, user }) {
             
             <div className="flex gap-3 pt-4">
               <button type="submit" className="flex-1 bg-[#2d60ff] text-white py-2.5 rounded-lg font-semibold transition">
-                {user?.id ? '💾 Сохранить' : '➕ Создать'}
+                {user?.id ? ' Сохранить' : ' Создать'}
               </button>
               <button type="button" onClick={onClose} className="flex-1 bg-gray-100 text-gray-700 py-2.5 rounded-lg font-semibold hover:bg-gray-200 transition">
                 Отмена

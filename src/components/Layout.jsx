@@ -19,7 +19,7 @@ export default function Layout() {
       
       <div className="md:ml-64">
         <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100">
-          <div className="flex items-center justify-between px-4 py-4 md:px-8">
+          <div className="flex items-center justify-between p-2 md:px-4 xl:px-8">
             <button
               onClick={() => setIsMobileMenuOpen(true)}
               className="md:hidden text-[#718ebf] hover:text-[#2d60ff] transition-colors"
@@ -29,10 +29,15 @@ export default function Layout() {
               </svg>
             </button>
             
-            <div className="flex-1">
-              <h1 className="text-lg font-semibold text-[#1a1f36]">Добро пожаловать, {user?.name}</h1>
-              <p className="text-sm text-[#718ebf] hidden sm:block">Управляйте новостями и пользователями</p>
-            </div>
+            <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 mr-auto">
+                <div className="w-10 h-10 rounded-full bg-[#2d60ff] flex items-center justify-center text-white font-bold">
+                  {user?.name?.charAt(0) || 'А'}
+                </div>
+                <div className="hidden md:block flex-1">
+                  <p className="text-sm font-medium text-[#1a1f36]">{user?.name || 'Администратор'}</p>
+                  <p className="text-xs text-[#718ebf]">{user?.role === 'admin' ? 'Управляйте новостями и пользователями' : 'Управляйте новостями'}</p>
+                </div>
+              </div>
             
             <div className="flex items-center gap-4">
               {/* Кнопка уведомлений */}
@@ -53,7 +58,7 @@ export default function Layout() {
           </div>
         </header>
         
-        <main className="p-4 md:p-6 lg:p-8 animate-fadeSlide">
+        <main className="p-4 md:p-6 animate-fadeSlide">
           <Outlet />
         </main>
       </div>

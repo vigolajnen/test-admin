@@ -59,8 +59,8 @@ export default function PublicNewsPage() {
                     {sanitizeText(item.title)}
                   </h2>
                   <div className="flex gap-4 text-sm text-gray-500 mb-4">
-                    <span>📅 {new Date(item.createdAt).toLocaleDateString()}</span>
-                    <span>👁️ {item.views} просмотров</span>
+                    <span> {new Date(item.createdAt).toLocaleDateString()}</span>
+                    <span> {item.views} просмотров</span>
                   </div>
                   <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
                     {sanitizeText(item.content)}

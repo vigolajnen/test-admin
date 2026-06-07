@@ -6,7 +6,7 @@ export default function NewsPreview({ news }) {
   return (
     <div className="border rounded-xl p-6 bg-gray-50">
       <h3 className="text-lg font-semibold text-gray-700 mb-3 flex items-center gap-2">
-        <span>👁️</span> Предпросмотр новости
+        <span></span> Предпросмотр новости
       </h3>
       <div className="bg-white rounded-xl border overflow-hidden">
         {safeImageUrl && (
@@ -22,8 +22,8 @@ export default function NewsPreview({ news }) {
             {sanitizeText(news.title)}
           </h2>
           <div className="flex gap-4 text-sm text-gray-500 mb-4">
-            <span>📅 {new Date(news.createdAt).toLocaleDateString()}</span>
-            <span>👁️ {news.views} просмотров</span>
+            <span> {new Date(news.createdAt).toLocaleDateString()}</span>
+            <span> {news.views} просмотров</span>
           </div>
           <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
             {sanitizeText(news.content)}
