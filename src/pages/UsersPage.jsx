@@ -83,10 +83,10 @@ export default function UsersPage() {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+      <div className="flex flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-            👥 Управление пользователями
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900">
+            Управление пользователями
           </h1>
           <p className="text-gray-500 mt-1 text-sm">
             Добавляйте и редактируйте пользователей, назначайте роли
@@ -94,9 +94,9 @@ export default function UsersPage() {
         </div>
         <button
           onClick={() => setModalOpen(true)}
-          className="w-full sm:w-auto bg-[#F05A28] hover:bg-[#D94A1A] text-white px-5 py-2.5 rounded-lg font-semibold transition flex items-center justify-center gap-2 shadow-sm"
+          className="w-auto bg-[#2d60ff] hover:bg-[#1e4fd9] text-white p-2 px-4 md:px-5 py-2.5 rounded-lg font-semibold transition flex items-center justify-center gap-2 shadow-sm"
         >
-          <span className="text-xl">+</span> Добавить пользователя
+          <span className="text-xl">+</span> <span className='hidden sm:flex text-sm'>Добавить</span>
         </button>
       </div>
 
@@ -113,7 +113,7 @@ export default function UsersPage() {
                         ? 'bg-red-100 text-red-700' 
                         : 'bg-blue-100 text-blue-700'
                     }`}>
-                      {user.role === 'admin' ? '👑 Администратор' : '✏️ Редактор'}
+                      {user.role === 'admin' ? ' Администратор' : ' Редактор'}
                     </span>
                   </div>
                   <p className="text-gray-500 text-sm">{user.email}</p>
@@ -127,7 +127,7 @@ export default function UsersPage() {
                     className="p-2 text-gray-500 hover:text-[#F05A28] transition-colors"
                     title="Редактировать"
                   >
-                    ✏️
+                    Редактировать
                   </button>
                   {user.id !== currentUser?.id && (
                     <button
@@ -135,7 +135,7 @@ export default function UsersPage() {
                       className="p-2 text-gray-500 hover:text-red-600 transition-colors"
                       title="Удалить"
                     >
-                      🗑️
+                      Удалить
                     </button>
                   )}
                 </div>
