@@ -1,4 +1,3 @@
-// src/mocks/handlers.js
 import { http, HttpResponse } from 'msw';
 
 let newsDb = [
@@ -35,8 +34,8 @@ let usersDb = [
 
 const findIndexById = (arr, id) => arr.findIndex((item) => item.id === id);
 
-// Определяем базовый URL в зависимости от окружения
-const baseUrl = import.meta.env.PROD ? 'https://vigolajnen.github.io/news' : '';
+// Базовый URL для продакшена
+const baseUrl = import.meta.env.PROD ? '/news' : '';
 
 export const handlers = [
   // НОВОСТИ

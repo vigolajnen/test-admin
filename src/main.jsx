@@ -4,12 +4,11 @@ import App from './App';
 import './index.css';
 
 async function enableMocking() {
-  // Включаем MSW в любой среде (и разработка, и продакшен)
   const { worker } = await import('./mocks/browser');
   return worker.start({
     onUnhandledRequest: 'bypass',
     serviceWorker: {
-      url: '/mockServiceWorker.js',
+      url: '/news/mockServiceWorker.js',
     },
   });
 }
