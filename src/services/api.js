@@ -1,11 +1,17 @@
 import axios from 'axios';
 
-// В режиме разработки используем MSW, который перехватывает запросы
-// В продакшене нужно будет настроить реальный API
-const API_URL = import.meta.env.VITE_API_URL || '';
+// Определяем базовый URL в зависимости от окружения
+const getBaseURL = () => {
+  // В продакшене (GitHub Pages) используем /test-admin
+  if (import.meta.env.PROD) {
+    return '/test-admin';
+  }
+  // В режиме разработки используем пустую строку (MSW перехватит)
+  return '';
+};
 
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: getBaseURL(),
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
