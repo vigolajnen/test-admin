@@ -22,7 +22,7 @@ function AppRoutes() {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/test-admin">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<NewsPage />} />
