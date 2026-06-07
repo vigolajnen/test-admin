@@ -35,7 +35,7 @@ let usersDb = [
 const findIndexById = (arr, id) => arr.findIndex((item) => item.id === id);
 
 // Базовый URL для продакшена
-const baseUrl = import.meta.env.PROD ? '/news' : '';
+const baseUrl = import.meta.env.PROD ? '/test-admin' : '';
 
 export const handlers = [
   // НОВОСТИ

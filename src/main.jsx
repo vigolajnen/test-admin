@@ -8,7 +8,7 @@ async function enableMocking() {
   return worker.start({
     onUnhandledRequest: 'bypass',
     serviceWorker: {
-      url: '/news/mockServiceWorker.js',
+      url: '/test-admin/mockServiceWorker.js',
     },
   });
 }
