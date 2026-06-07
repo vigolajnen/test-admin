@@ -1,7 +1,6 @@
 // src/mocks/handlers.js
 import { http, HttpResponse } from 'msw';
 
-// Начальные данные
 let newsDb = [
   {
     id: "1",
@@ -34,19 +33,18 @@ let usersDb = [
   },
 ];
 
-// Хелперы
 const findIndexById = (arr, id) => arr.findIndex((item) => item.id === id);
 
+// Определяем базовый URL в зависимости от окружения
+const baseUrl = import.meta.env.PROD ? 'https://vigolajnen.github.io/news' : '';
+
 export const handlers = [
-  // ===== НОВОСТИ =====
-  
-  // GET /news
-  http.get('/news', () => {
+  // НОВОСТИ
+  http.get(`${baseUrl}/news`, () => {
     return HttpResponse.json(newsDb);
   }),
   
-  // POST /news
-  http.post('/news', async ({ request }) => {
+  http.post(`${baseUrl}/news`, async ({ request }) => {
     const newNews = await request.json();
     const createdNews = {
       ...newNews,
@@ -59,57 +57,39 @@ export const handlers = [
     return HttpResponse.json(createdNews, { status: 201 });
   }),
   
-  // PUT /news/:id
-  http.put('/news/:id', async ({ params, request }) => {
+  http.put(`${baseUrl}/news/:id`, async ({ params, request }) => {
     const { id } = params;
     const updates = await request.json();
     const index = findIndexById(newsDb, id);
-    
-    if (index === -1) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
+    if (index === -1) return new HttpResponse(null, { status: 404 });
     newsDb[index] = { ...newsDb[index], ...updates };
     return HttpResponse.json(newsDb[index]);
   }),
   
-  // DELETE /news/:id
-  http.delete('/news/:id', ({ params }) => {
+  http.delete(`${baseUrl}/news/:id`, ({ params }) => {
     const { id } = params;
     const index = findIndexById(newsDb, id);
-    
-    if (index === -1) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
+    if (index === -1) return new HttpResponse(null, { status: 404 });
     newsDb.splice(index, 1);
     return new HttpResponse(null, { status: 204 });
   }),
   
-  // PATCH /news/:id
-  http.patch('/news/:id', async ({ params, request }) => {
+  http.patch(`${baseUrl}/news/:id`, async ({ params, request }) => {
     const { id } = params;
     const updates = await request.json();
     const index = findIndexById(newsDb, id);
-    
-    if (index === -1) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
+    if (index === -1) return new HttpResponse(null, { status: 404 });
     newsDb[index] = { ...newsDb[index], ...updates };
     return HttpResponse.json(newsDb[index]);
   }),
   
-  // ===== ПОЛЬЗОВАТЕЛИ =====
-  
-  // GET /users
-  http.get('/users', () => {
+  // ПОЛЬЗОВАТЕЛИ
+  http.get(`${baseUrl}/users`, () => {
     const safeUsers = usersDb.map(({ password, ...user }) => user);
     return HttpResponse.json(safeUsers);
   }),
   
-  // POST /users
-  http.post('/users', async ({ request }) => {
+  http.post(`${baseUrl}/users`, async ({ request }) => {
     const newUser = await request.json();
     const createdUser = {
       ...newUser,
@@ -121,30 +101,20 @@ export const handlers = [
     return HttpResponse.json(safeUser, { status: 201 });
   }),
   
-  // PUT /users/:id
-  http.put('/users/:id', async ({ params, request }) => {
+  http.put(`${baseUrl}/users/:id`, async ({ params, request }) => {
     const { id } = params;
     const updates = await request.json();
     const index = findIndexById(usersDb, id);
-    
-    if (index === -1) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
+    if (index === -1) return new HttpResponse(null, { status: 404 });
     usersDb[index] = { ...usersDb[index], ...updates };
     const { password, ...safeUser } = usersDb[index];
     return HttpResponse.json(safeUser);
   }),
   
-  // DELETE /users/:id
-  http.delete('/users/:id', ({ params }) => {
+  http.delete(`${baseUrl}/users/:id`, ({ params }) => {
     const { id } = params;
     const index = findIndexById(usersDb, id);
-    
-    if (index === -1) {
-      return new HttpResponse(null, { status: 404 });
-    }
-    
+    if (index === -1) return new HttpResponse(null, { status: 404 });
     usersDb.splice(index, 1);
     return new HttpResponse(null, { status: 204 });
   }),
