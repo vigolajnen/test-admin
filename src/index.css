@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Цвета BankDash */
+    --primary-3: #2d60ff;
+    --primari-1: #feaa09;
+    --secondery: #fe5c73;
+    --primary-2: #343c6a;
+    --text-secondary: #718ebf;
+    --text-primary: #1a1f36;
+    --background: #f5f7fa;
+    --card-bg: #ffffff;
+    --border: #e6e8ec;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  /* Улучшенные скроллбары */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-3);
+  }
+}
+
+/* Анимации */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-280px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fadeSlide {
+  animation: fadeSlideIn 0.2s ease-out;
+}
+.animate-slideRight {
+  animation: slideInRight 0.25s ease-out;
+}
+.animate-slideLeft {
+  animation: slideInLeft 0.3s ease-out;
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Утилиты для цвета текста */
+.text-secondary {
+  color: var(--text-secondary);
+}
